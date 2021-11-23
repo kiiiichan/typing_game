@@ -5,7 +5,24 @@ body {
     color: #5E199B; /*素の文字の色？*/
     margin: 0; /*？？*/
 }
+/*
+.bg-text {
+  border: solid none;
+  display: inline-block;
+  padding:10px 20px;
+  background-color:#EDE3CE ;
+}
 
+.bg {
+  text-align: center;
+  padding: 150px;
+  border:none;
+}
+
+.bg {
+  background-image: url(../image/bg.png);
+}
+*/
 h1 {
     margin: 0 0 10px 0; /*コンテンツの上右下左のマージン*/
     padding: 0;
@@ -36,6 +53,18 @@ button[type="button"]{
   font-size: 20px;
   font-weight:bold;
   border-radius: 0 20px 20px 0;
+}
+
+#start_button[type="button"]{
+  border: 6px solid #DD372A;
+  outline: 0;
+  width: 200px;
+  height: 50px;
+  background-color:#DD372A;
+  color:#ffffff;
+  font-size: 26px;
+  font-weight:bold;
+  border-radius: 20px 20px 20px 20px;
 }
 
 .container {
@@ -85,6 +114,7 @@ button[type="button"]{
     height: 240px;
     margin-right:10px;
     float: left;
+
 }
 
 .right-contents {
