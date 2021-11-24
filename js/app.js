@@ -5,9 +5,6 @@
 //ページ読みこんだタイミングで実施(全体)
 
 window.addEventListener("DOMContentLoaded", () => {
-  
-
-
 
   //ここから関数定義
   
@@ -72,7 +69,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
   function judge(){
-    var i = 0;
+    let input = player_type.value;
+    
     if(!state) return; //終了後に操作できないようにする
       
     let answer = items[i].answer;
@@ -129,36 +127,30 @@ window.addEventListener("DOMContentLoaded", () => {
       { answer: "天智天皇" , text1: "壬申の乱" , text2: "甥に勝って" , text3: "天皇に"  , image:"../image/06.png"}
       ];
     const judge_button = document.getElementById("judgement");
-    const player_type = document.getElementById("your_type");
-    let input = player_type.value;
+   // const player_type = document.getElementById("your_type");
+   // let input = player_type.value;
     const timer = document.getElementById("timer");
+    const player_type = document.getElementById("your_type");
     let correct_count = 0;
     let state = true;
     timer.textContent = '制限時間：' + TIME + '秒';
     let countdown_pid ; 
+    var i = 0;
   //変数定義終わり
     image.src = "../image/start.png";  // 開始画像表示
-
-  let challangeFlow = () => {
+    
+    
+  //全体処理流れ  
+  start_button.addEventListener("click", () => {
     itemShuffle(items);
     items = itemShuffle(items);
     initGame(TIME);
     countdown_pid = countdown(TIME);
-
-
-  };
-
-      judge_button.addEventListener("click", () => {
-        judge();
-          console.log("judge");
+    
+    judge_button.addEventListener("click", () => {
+      judge();
     })
 
-  start_button.addEventListener("click", () => {
-    challangeFlow();
-    console.log("start");
-
   })
-
-
 
 })  
