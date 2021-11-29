@@ -1,2 +1,3 @@
 console.log("hello");
-  console.log(romajiConv('hogehoget').toHiragana()); // ほげほげ
+let input = "hogehoget";
+  console.log(romajiConv(input).toHiragana()); // ほげほげ
