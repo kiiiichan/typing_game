@@ -36,34 +36,18 @@ window.onload = function(){
     let input = player_type.value;
     let inputKanaa = romajiConv(input).toHiragana();//ほげほげt型
     let inputKana = inputKanaa.replace(/[^\u3040-\u309F]/g, '');//ほげほげ型
-    let correct_input = "" ;
-    
-//入力したひらがなの数を出す
-    var hira_count = 0;
-    var j ;
-    for(j=0; j < inputKana.length;j++){
-        hira_count += inputKana[j].length;
-    }
     
     //その時点での正解を出す
-    let answer_kn = items[i].answer_kn[hira_count];//i番目の項目のkn_i文字目のひらがな
+    let answer_kn = items[i].answer_kn[inputKana.length];//i番目の項目のkn_i文字目のひらがな
     
-    //今入力したキー　keycd　　1個前に入力したキー　keycd_p を取得する
-    //inputの文字数をカウント　input_count
-    var input_count = 0;
-    var k ;
-    for(k=0; k < input.length;k++){
-        input_count += input[k].length;
-    }
-
     inputKanaa_eiji = inputKanaa.replace(/[^0-9a-z]/gi, '');
     
     //もし入力キーが3回n続きだったら　inputのひらがなを１文字削除
-    if (input.charAt(input_count-1) == "n" && input.charAt(input_count-2) == "n" && input.charAt(input_count-3) == "n") {
+    if (input.charAt(input.length-1) == "n" && input.charAt(input.length-2) == "n" && input.charAt(input.length-3) == "n") {
     inputKana = inputKana.slice( 0, -1 ) ;
     
     //もし入力キーがnで1個前の入力キーがnじゃなかったら　inputのひらがなを１文字削除    
-    } else if (input.charAt(input_count-1) == "n" && input.charAt(input_count-2) != "n") {
+    } else if (input.charAt(input.length-1) == "n" && input.charAt(input.length-2) != "n") {
     inputKana = inputKana.slice( 0, -1 ) ;
     
     //入力値が最終の答えと一致していたらJudgeに進む
@@ -97,6 +81,7 @@ window.onload = function(){
     let answer = items[i].answer;
     let inputKanaa = romajiConv(input).toHiragana();//ほげほげt型_画面表示用
     let inputKana = inputKanaa.replace(/[^\u3040-\u309F]/g, '');//ほげほげ型_判定用
+    let correct_input = "" ;
     
     console.log("inputKana：" + inputKana);
     console.log("answer：" + answer);
@@ -115,7 +100,7 @@ window.onload = function(){
     }
   }
     
-    //関数７．次の問題文を表示
+  //　関数７．次の問題文を表示
   function init_item_display() {
     drawItemDisplay(i);
     drawForm('#FFFFFF');
@@ -128,10 +113,8 @@ window.onload = function(){
      max = Math.floor(max);
      return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
  }
- 
 
-
-  //変数定義
+  //　変数定義
     let TIME = 60;
     const image = document.getElementById("image");
     const text1 = document.getElementById("text1");
@@ -168,6 +151,7 @@ window.onload = function(){
     let bgm = new Audio('../audio/bgm01.mp3');
     let input = player_type.value;
     let inputKanaa_eiji;
+    let correct_input;
   //変数定義終わり
     image.src = "../image/start.png";  // 開始画像表示
     
@@ -197,8 +181,6 @@ window.onload = function(){
     document.getElementById('your_type').style.backgroundColor =  color; // 入力欄の色を変える
   };
     
-    
-    
   //スタートボタン押下時の初期化設定（ChallengeClass）
   let initDisplay = (TIME) => {
     start_button.addEventListener("click", () => {
@@ -221,12 +203,12 @@ window.onload = function(){
         if(TIME <= 0) finish();
       }, 1000);
     })
-  }
+  };
     
   function clear(){
     drawDisplay(TIME + '秒残しでクリア！','おめでとうございます',"","../image/perfect.png")
     clearInterval(countdown_pid);
-    drawTimer('');
+    drawTimer("");
     player_type.value = "";
     document.getElementById('your_type').blur();
   }
@@ -271,3 +253,7 @@ window.onload = function(){
 /*
 if(!state) return; が機能していない？よくわかっていない
 */
+
+//バグ
+//clearIntervalがきかなくなってる
+//途中でアルファベット3文字入力した時？回答が全部消える（合ってるとこも）

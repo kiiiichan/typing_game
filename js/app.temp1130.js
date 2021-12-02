@@ -33,16 +33,16 @@ window.onload = function(){
     let input = player_type.value;
     let inputKanaa = romajiConv(input).toHiragana();//ほげほげt型
     let inputKana = inputKanaa.replace(/[^\u3040-\u309F]/g, '');//ほげほげ型
-    
+    /*
 //入力したひらがなの数を出す
     var hira_count = 0;
     var j ;
     for(j=0; j < inputKana.length;j++){
         hira_count += inputKana[j].length;
-    }
+    }*/
     
     //その時点での正解を出す
-    let answer_kn = items[i].answer_kn[hira_count];//i番目の項目のkn_i文字目のひらがな
+    let answer_kn = items[i].answer_kn[inputKana.length];//i番目の項目のkn_i文字目のひらがな
     
     //今入力したキー　keycd　　1個前に入力したキー　keycd_p を取得する
     //inputの文字数をカウント　input_count
