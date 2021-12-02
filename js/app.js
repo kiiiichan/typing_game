@@ -8,14 +8,16 @@ window.onload = function(){
 
   //ここから関数定義
   
-  // 配列をシャッフル
+  // 配列をシャッフル（ChallengeClass）
   let itemShuffle = (items) => {
-    for (let i = items.length - 1; i >= 0; i--) {
-      let rand = Math.floor(Math.random() * (i + 1));
-      // 配列の数値を入れ替える
-      [items[i], items[rand]] = [items[rand], items[i]]
-    }
-    return items;
+    start_button.addEventListener("click", () => {
+      for (let i = items.length - 1; i >= 0; i--) {
+        let rand = Math.floor(Math.random() * (i + 1));
+        // 配列の数値を入れ替える
+        [items[i], items[rand]] = [items[rand], items[i]]
+      }
+      return items;
+    })
   };
 
   //時間切れ終了処理（ChallengeClass）
@@ -198,10 +200,12 @@ window.onload = function(){
     
     
   //スタートボタン押下時の初期化設定（ChallengeClass）
-  let initGame = (TIME) => {
-    drawItemDisplay(0);
-    drawForm('#FFFFFF');
-    drawTimer('残り：' + TIME + '秒');
+  let initDisplay = (TIME) => {
+    start_button.addEventListener("click", () => {
+      drawItemDisplay(0);
+      drawForm('#FFFFFF');
+      drawTimer('残り：' + TIME + '秒');
+    })
   };
   
   //setintervalは一定時間ごとにこの処理をする
@@ -211,10 +215,12 @@ window.onload = function(){
   
   //関数３．カウントダウン（ChallengeClass）
   const countdown = function(){
-    return setInterval(function(){
-      drawTimer('残り：' + --TIME + '秒');
-      if(TIME <= 0) finish();
-    }, 1000);
+    start_button.addEventListener("click", () => {
+      return setInterval(function(){
+        drawTimer('残り：' + --TIME + '秒');
+        if(TIME <= 0) finish();
+      }, 1000);
+    })
   }
     
   function clear(){
@@ -225,6 +231,11 @@ window.onload = function(){
     document.getElementById('your_type').blur();
   }
   
+  function bgmPlay(){
+    start_button.addEventListener("click", () => {
+      bgm.play();
+    })
+  }
   
   //ここを書き換えてみる
   function getKeyCode(){
@@ -234,22 +245,27 @@ window.onload = function(){
       })
   }
   
-    //開始処理（ここがpromise使うとこ？うまくできず）
+  function getPid() {
+    start_button.addEventListener("click", () => {
+      countdown_pid = countdown(TIME);
+    })
+  }
+  
   function start() {
-  start_button.addEventListener("click", () => {
-    bgm.play();
+    bgmPlay();
     itemShuffle(items);
-    initGame(TIME);
-    countdown_pid = countdown(TIME);
-  })
+    initDisplay(TIME);
+    getPid();
+    countdown();
+  }
+  
+  function gamePlay() {
+    getKeyCode();
+    typeJudge();
   }
   
   start();
-  getKeyCode();
-  typeJudge();
-  
-  
-
+  gamePlay();
   
 }
 /*
