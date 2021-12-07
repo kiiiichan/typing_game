@@ -2,7 +2,7 @@ body {
     background-color:#EDE3CE; /*背景*/
     font-family: "Hiragino Sans" ;
     font-size: 14px; /*素の文字？*/
-    color: #5E199B; /*素の文字の色？*/
+    color: #5E199B; /*素の文字の色？紫*/
     margin: 0; /*？？*/
 }
 
@@ -108,8 +108,16 @@ button[type="button"]{
 
 #timer {
   color:#DD372A;
+  text-align: left;
+  float: left;
 }
 
+#itemCounter {
+  color:#5E199B; 
+  text-align: right;
+  float: right;
+  margin-right:200px;
+}
 
 
 .left-contents {

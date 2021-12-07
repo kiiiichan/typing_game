@@ -6,8 +6,6 @@
 
 window.onload = function(){
   
-
-
   //ここから関数定義
   
   // 配列をシャッフル（ChallengeClass）
@@ -53,6 +51,7 @@ window.onload = function(){
     text3.textContent = "";
     player_type.value = "";
     document.getElementById('your_type').blur();
+    itemCounter.textContent = '';
   }
   
 //タイピング型判定処理（ItemClass）
@@ -114,7 +113,8 @@ window.onload = function(){
     TIME = 60;
     correct_count = 0;
     i = 0;
-    timer.textContent = '制限時間：' + TIME + '秒　　　　　あと：' + (17-i) +'問';
+    timer.textContent = '制限時間：' + TIME + '秒';
+    itemCounter.textContent = '問題数：' + 16 +'問';
   };
   
 //関数６．判定処理  
@@ -141,6 +141,7 @@ window.onload = function(){
       correct_count = correct_count + 1 ;
       i = i+1 ;
       init_item_display();
+      itemCounter.textContent = 'あと：' + (16-i) +'問';
     }
   }
     
@@ -245,6 +246,7 @@ window.onload = function(){
   const player_type = document.getElementById("your_type");
  // let input = player_type.value;
   const timer = document.getElementById("timer");
+  const itemCounter = document.getElementById("itemCounter");
   let bgm = new Audio('../audio/bgm01.mp3');
   let typeSound = new Audio('../audio/type_sound.mp4');
   let clearSound = new Audio('../audio/clear.mp3');
