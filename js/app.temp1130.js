@@ -17,13 +17,32 @@ window.onload = function(){
     }
     return items;
   };
+  
+  //カウントダウン（ChallengeClass）
+  const countdown = function(){
+    return setInterval(function(){
+      drawTimer('残り：' + --TIME + '秒');
+      if(TIME <= 0) finish();
+    }, 1000);
+  }
+  
 
   //関数４．時間切れ終了処理（ChallengeClass）
-    function finish(){
+  function finish(){
     clearInterval(countdown_pid);
     drawDisplay("",'正解数は' + correct_count  + '個でした！',"","../image/end.jpg");
     drawForm('#0D95A0');
-    }
+  }
+    
+  function clear(){
+    clearInterval(countdown_pid);
+    image.src = "../image/perfect.png";  // clear画像表示
+    timer.textContent = '';
+    text1.textContent = TIME + '秒残しでクリア！';
+    text2.textContent = 'おめでとうございます';
+    text3.textContent = "";
+    player_type.value = "";
+  }
   
 //関数５．タイピング型判定処理（ItemClass）
   
@@ -202,23 +221,8 @@ window.onload = function(){
   //0になったらfinish処理
   //1行目は　const countdown = setInterval( () => { としてもOKなはず。functionのほうが昔ながらの書き方
   
-  //関数３．カウントダウン（ChallengeClass）
-  const countdown = function(){
-    return setInterval(function(){
-      drawTimer('残り：' + --TIME + '秒');
-      if(TIME <= 0) finish();
-    }, 1000);
-  }
     
-    function clear(){
-    image.src = "../image/perfect.png";  // clear画像表示
-    clearInterval(countdown_pid);
-    timer.textContent = '';
-    text1.textContent = TIME + '秒残しでクリア！';
-    text2.textContent = 'おめでとうございます';
-    text3.textContent = "";
-    player_type.value = "";
-  }
+
   
   
   //ここを書き換えてみる
