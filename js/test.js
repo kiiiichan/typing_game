@@ -1,4 +1,5 @@
-//issueの練習
+//issueの練習２
+
 /*
 var images = [
         "../image/01.png",
