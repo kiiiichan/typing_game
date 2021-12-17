@@ -318,7 +318,7 @@ window.onload = function(){
   let keycd;
     
   document.getElementById("start_button").style.visibility ="hidden";
-  document.getElementById("text4").style.visibility ="hidden";
+  document.getElementById("text4").style.display ="none";
   image.src = "../image/loading.gif";  //Loading画像表示
   image.style.width = "50px";
   image.style.height = "50px";
