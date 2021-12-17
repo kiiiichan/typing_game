@@ -1,14 +1,13 @@
-//検証ツールのコンソールにコメントを出せる。変数を出すようにしておくなど
-//console.log('hello');
-
 
 //ページ読みこんだタイミングで実施(全体)
         
 window.onload = function(){
-  /*
-  localStorage.removeItem('heianPrize');
-  delete localStorage.heianPrize;
-  */
+  
+  function prizeReset() {
+    localStorage.removeItem('heianPrize');
+    delete localStorage.heianPrize; 
+  }
+
   function loadImage(src) {
     return new Promise((resolve, reject) => {
       const img = new Image();
@@ -17,35 +16,19 @@ window.onload = function(){
     });
   }
 
-  // async/await
   async function imagePreLoad() {
-      await loadImage(items[0].image);
-      await loadImage(items[1].image);
-      await loadImage(items[2].image);
-      
-      await loadImage(items[3].image);
-      await loadImage(items[4].image);
-      await loadImage(items[5].image);
-      await loadImage(items[6].image);
-      await loadImage(items[7].image);
-      await loadImage(items[8].image);
-      await loadImage(items[9].image);
-      await loadImage(items[10].image);
-      await loadImage(items[11].image);
-      await loadImage(items[12].image);
-      await loadImage(items[13].image);
-      await loadImage(items[14].image);
-      await loadImage(items[15].image);
-      /*
-      */
+    
+      for (const item of items) {
+        await loadImage(item.image);
+      }
 
       image.src = "../image/start.png";  // 開始画像表示
+      setTimeout(function(){
+      image.style.width = "";
+      image.style.height = "";
       document.getElementById("start_button").style.visibility ="visible";
+      },300);
   }
-  
-  
-  
-  //ここから関数定義
   
   // 配列をシャッフル（ChallengeClass）
   let itemShuffle = (items) => {
@@ -308,7 +291,7 @@ window.onload = function(){
     { answer_q: "菅原道真" , answer: 'すがわらのみちざね' , answer_kn: ["","す","すが","すがわ","すがわら","すがわらの","すがわらのみ","すがわらのみち","すがわらのみちざ","すがわらのみちざね"] , text1: "遣唐使" , text2: "中止提案で" , text3: "流された" , image:"../image/11.png"},
     { answer_q: "平将門" , answer: 'たいらのまさかど' , answer_kn: ["","た","たい","たいら","たいらの","たいらのま","たいらのまさ","たいらのまさか","たいらのまさかど"] , text1: "天皇家に" , text2: "逆らうヒーロー" , text3: "我新皇" , image:"../image/12.jpg"},
     { answer_q: "清少納言" , answer: 'せいしょうなごん' , answer_kn: ["","せ","せい","せいし","せいしょ","せいしょう","せいしょうな","せいしょうなご","せいしょうなごん"] , text1: "随筆の" , text2: "枕草子を" , text3: "書いた人" , image:"../image/13.png"},
-    { answer_q: "藤原道長" , answer: 'ふじわらのみちなが' , answer_kn: ["","ふ","ふじ","ふじわ","ふじわら","ふじわらの","ふじわらのみ","ふじわらのみち","ふじわらのみちな","ふじわらのみちなが"] , text1: "孫３人" , text2: "天皇になり" , text3: "お金持ち" , image:"../image/14.png"},
+    { answer_q: "藤原道長" , answer: 'ふじわらのみちなが' , answer_kn: ["","ふ","ふじ","ふじわ","ふじわら","ふじわらの","ふじわらのみ","ふじわらのみち","ふじわらのみちな","ふじわらのみちなが"] , text1: "この世はね" , text2: "望月のように" , text3: "満足よ" , image:"../image/14.png"},
     { answer_q: "紫式部" , answer: 'むらさきしきぶ' , answer_kn: ["","む","むら","むらさ","むらさき","むらさきし","むらさきしき","むらさきしきぶ"] , text1: "イケメンの" , text2: "源氏物語" , text3: "大人気" , image:"../image/15.jpg"},
     { answer_q: "平清盛" , answer: 'たいらのきよもり' , answer_kn: ["","た","たい","たいら","たいらの","たいらのき","たいらのきよ","たいらのきよも","たいらのきよもり"] , text1: "保元と" , text2: "平治の乱で" , text3: "源氏に勝ち" , image:"../image/16.jpg"},
   
@@ -336,7 +319,9 @@ window.onload = function(){
     
   document.getElementById("start_button").style.visibility ="hidden";
   document.getElementById("text4").style.visibility ="hidden";
-  image.src = "../image/loading.png";  //Loading画像表示
+  image.src = "../image/loading.gif";  //Loading画像表示
+  image.style.width = "50px";
+  image.style.height = "50px";
   initGame();//画面を読み込んだ時点でinitGame
 
   //画面読み込みの時点でlocalStorage の heianPrizeに値がなければ 変数heianPrizeに"未制覇"の文字を入れる 

@@ -5,7 +5,6 @@ body {
     color: #5E199B; /*素の文字の色？紫*/
     margin: 0; /*？？*/
 }
-
 /*
 .bg-text {
   border: solid none;
@@ -91,7 +90,6 @@ button[type="button"]{
 .illust {
   width: 200px;
   margin-right: 35px;
-  float: left;
 }
 
 #image {
@@ -100,6 +98,7 @@ button[type="button"]{
   height: 200px;
   display: block;
   background-color:#EDE3CE;
+  margin:0 auto;
 }
 
 #timer {
@@ -133,14 +132,18 @@ button[type="button"]{
 
 
 .left-contents {
-    width: 240px;
-    height: 240px;
-    margin-right:10px;
+  width: 240px;
+  height: 240px;
+  margin-right:10px;
+  display:flex;
+  align-items: center;
 
 }
 
 .right-contents {
-    width: 300px;
-    height: 210px;
-    margin-top:0px;
+  width: 300px;
+  height: 210px;
+  margin-top:30px;
+  display:flex;
+  align-items: center;
 }
