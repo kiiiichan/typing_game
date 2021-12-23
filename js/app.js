@@ -72,13 +72,12 @@ window.onload = function(){
     timer.textContent = '';
     text1.textContent = TIME + '秒残しでクリア';
     text2.textContent = heianPrize ;
-  //  text3.textContent = "ここをリンクにしたい" ;
     player_type.value = "";
     document.getElementById('your_type').blur();
     itemCounter.textContent = '';
     
-    document.getElementById("text4").style.visibility ="visible";
-    document.getElementById("text3").style.display ="none";
+    text4.style.display ="block";
+    text3.style.display ="none";
     
     //text1.style.fontSize = '25px';
     text2.style.fontSize = '25px';
@@ -155,6 +154,8 @@ window.onload = function(){
     TIME = 60;
     correct_count = 0;
     i = 0;
+    text3.style.display ="block";
+    text4.style.display ="none";
     timer.textContent = '制限時間：' + TIME + '秒';
     itemCounter.textContent = '問題数：' + items.length +'問';
     text1.textContent = "人物名をタイピングしよう";
@@ -280,7 +281,7 @@ window.onload = function(){
     { answer_q: "卑弥呼" , answer: 'ひみこ' , answer_kn: ["","ひ","ひみ","ひみこ"] , text1: "お告げ聞く" , text2: "邪馬台国の" , text3: "女王さま" , image:"../image/01.png"},
     { answer_q: "聖徳太子" , answer: 'しょうとくたいし' , answer_kn: ["","し","しょ","しょう","しょうと","しょうとく","しょうとくた","しょうとくたい","しょうとくたいし"] , text1: "能力で" , text2: "与える冠位" , text3: "十二階" , image:"../image/02.png"},
     { answer_q: "蘇我馬子" , answer: 'そがのうまこ' , answer_kn: ["","そ","そが","そがの","そがのう","そがのうま","そがのうまこ"] , text1: "豪族で" , text2: "推古天皇の" , text3: "おじさんよ"  , image:"../image/03.png"},
-
+/*
     { answer_q: "小野妹子" , answer: 'おののいもこ' , answer_kn: ["","お","おの","おのの","おののい","おののいも","おののいもこ"] , text1: "遣隋使" , text2: "聖徳太子に" , text3: "命じられ"  , image:"../image/04.png"},
     { answer_q: "中臣鎌足" , answer: 'なかとみのかまたり' , answer_kn: ["","な","なか","なかと","なかとみ","なかとみの","なかとみのか","なかとみのかま","なかとみのかまた","なかとみのかまたり"] , text1: "死ぬ直前" , text2: "藤原の姓を" , text3: "与えられ"  , image:"../image/05.png"},
     { answer_q: "天武天皇" , answer: 'てんむてんのう' , answer_kn: ["","て","てん","てんむ","てんむて","てんむてん","てんむてんの","てんむてんのう"] , text1: "壬申の乱" , text2: "甥に勝って" , text3: "天皇に"  , image:"../image/06.jpg"},
@@ -294,7 +295,7 @@ window.onload = function(){
     { answer_q: "藤原道長" , answer: 'ふじわらのみちなが' , answer_kn: ["","ふ","ふじ","ふじわ","ふじわら","ふじわらの","ふじわらのみ","ふじわらのみち","ふじわらのみちな","ふじわらのみちなが"] , text1: "この世はね" , text2: "望月のように" , text3: "満足よ" , image:"../image/14.png"},
     { answer_q: "紫式部" , answer: 'むらさきしきぶ' , answer_kn: ["","む","むら","むらさ","むらさき","むらさきし","むらさきしき","むらさきしきぶ"] , text1: "イケメンの" , text2: "源氏物語" , text3: "大人気" , image:"../image/15.jpg"},
     { answer_q: "平清盛" , answer: 'たいらのきよもり' , answer_kn: ["","た","たい","たいら","たいらの","たいらのき","たいらのきよ","たいらのきよも","たいらのきよもり"] , text1: "保元と" , text2: "平治の乱で" , text3: "源氏に勝ち" , image:"../image/16.jpg"},
-  
+  */
     ];
   const judge_button = document.getElementById("judgement");
   const player_type = document.getElementById("your_type");
@@ -318,6 +319,7 @@ window.onload = function(){
   let keycd;
     
   document.getElementById("start_button").style.visibility ="hidden";
+  document.getElementById("text3").style.display ="block";
   document.getElementById("text4").style.display ="none";
   image.src = "../image/loading.gif";  //Loading画像表示
   image.style.width = "50px";
